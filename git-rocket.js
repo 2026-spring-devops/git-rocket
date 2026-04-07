@@ -57,6 +57,12 @@ export const flames = [
 const isMain = process.argv[1] && import.meta.url.endsWith(process.argv[1].replace(/\\/g, '/'));
 if (isMain) {
 
+import('asciify').then(({ default: asciify }) => {
+
+// Parse -who argument
+const whoIdx = process.argv.indexOf('-who');
+const name = whoIdx !== -1 && process.argv[whoIdx + 1] ? process.argv[whoIdx + 1] : null;
+
 const rows = process.stdout.rows || 40;
 const totalFrames = rocket.length + rows;
 const duration = 5000;
@@ -66,10 +72,23 @@ process.stdout.write('\x1B[?25l'); // hide cursor
 process.stdout.write('\x1B[2J');   // clear screen
 
 let frame = 0;
+let byeBannerLines = [];
 
-const interval = setInterval(() => {
+// Generate banner(s), then start animation
+const bannerPromises = [
+  new Promise(resolve => asciify('Bye', { font: 'standard' }, (err, res) => resolve(err ? '' : res))),
+];
+if (name) {
+  bannerPromises.push(
+    new Promise(resolve => asciify(name, { font: 'standard' }, (err, res) => resolve(err ? '' : res)))
+  );
+}
+Promise.all(bannerPromises).then(results => {
+  byeBannerLines = results.flatMap(r => r.split('\n').filter(l => l.trim()));
+
+  const interval = setInterval(() => {
   const flameSet = flames[frame % flames.length];
-  const fullRocket = [...rocket, ...flameSet];
+  const fullRocket = [...rocket, ...flameSet, ...byeBannerLines];
   const offset = rows - frame;
 
   process.stdout.write('\x1B[H'); // move cursor home
@@ -85,7 +104,7 @@ const interval = setInterval(() => {
   }
 
   frame++;
-  if (frame > totalFrames) {
+  if (frame > totalFrames + byeBannerLines.length) {
     clearInterval(interval);
     process.stdout.write('\x1B[?25h'); // show cursor
     process.stdout.write('\x1B[2J\x1B[H'); // clear & home
@@ -93,9 +112,13 @@ const interval = setInterval(() => {
   }
 }, frameDelay);
 
+}); // end Promise.all
+
 process.on('SIGINT', () => {
   process.stdout.write('\x1B[?25h');
   process.exit();
 });
+
+}); // end asciify import
 
 } // end isMain

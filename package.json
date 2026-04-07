@@ -7,7 +7,10 @@
   "type": "module",
   "main": "git-rocket.js",
   "scripts": {
-    "start": "node git-rocket.js",
+    "start": "node git-rocket.js --",
     "test": "node --test git-rocket.test.js"
+  },
+  "dependencies": {
+    "asciify": "^1.3.5"
   }
 }
