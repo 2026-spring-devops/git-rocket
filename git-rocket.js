@@ -97,9 +97,17 @@ if (name) {
 Promise.all(bannerPromises).then(results => {
   byeBannerLines = results.flatMap(r => r.split('\n').filter(l => l.trim()));
 
+const PURPLE = '\x1B[35m';
+const ORANGE = '\x1B[33m';
+const RESET = '\x1B[0m';
+
   const interval = setInterval(() => {
   const flameSet = flames[frame % flames.length];
-  const fullRocket = [...rocket, ...flameSet, ...byeBannerLines];
+  const fullRocket = [
+    ...rocket.map(l => PURPLE + l + RESET),
+    ...flameSet.map(l => ORANGE + l + RESET),
+    ...byeBannerLines.map(l => PURPLE + l + RESET),
+  ];
   const offset = rows - frame;
 
   process.stdout.write('\x1B[H'); // move cursor home
