@@ -87,7 +87,7 @@ let byeBannerLines = [];
 
 // Generate banner(s), then start animation
 const bannerPromises = [
-  new Promise(resolve => asciify('Go', { font: 'standard' }, (err, res) => resolve(err ? '' : res))),
+  new Promise(resolve => asciify('Feature 1', { font: 'standard' }, (err, res) => resolve(err ? '' : res))),
 ];
 if (name) {
   bannerPromises.push(
