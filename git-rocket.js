@@ -7,24 +7,24 @@ export const rocket = [
   String.raw`          /|__|\          `,
   String.raw`         /  ||  \         `,
   String.raw`        /   ||   \        `,
-  String.raw`       |    ||    |       `,
-  String.raw`       |    ||    |       `,
-  String.raw`            ||    |       `,
-  String.raw`            ||    |       `,
-  String.raw`       |    ||    |       `,
-  String.raw`       |    ||    |       `,
-  String.raw`      /|    ||    |\      `,
-  String.raw`     /      ||    | \      `,
-  String.raw`    /       ||       \     `,
-  String.raw`   /___|____||__   ___\   `,
-  String.raw`     /      ||      \     `,
-  String.raw`    /       ||       \    `,
-  String.raw`   /        ||        \   `,
-  String.raw`  /         ||         \  `,
-  String.raw` /          ||          \ `,
-  String.raw` \          ||          / `,
-  String.raw`  \         ||         /  `,
-  String.raw`   \________||________/   `,
+  String.raw`       | B  ||    |       `,
+  String.raw`       | I  ||    |       `,
+  String.raw`         G  || T  |       `,
+  String.raw`            || H  |       `,
+  String.raw`       |    || R  |       `,
+  String.raw`       |    || U  |       `,
+  String.raw`      /|    || S  |\      `,
+  String.raw`     /      || T  | \      `,
+  String.raw`    /       || E     \     `,
+  String.raw`   /___|____||_R   ___\   `,
+  String.raw`     /   J  ||H     \     `,
+  String.raw`    /    E  ||I      \    `,
+  String.raw`   /     F  ||L       \   `,
+  String.raw`  /      F  ||D        \  `,
+  String.raw` /          ||E         \ `,
+  String.raw` \          ||B         / `,
+  String.raw`  \         ||R        /  `,
+  String.raw`   \________||AND_____/   `,
   String.raw`        /   ||   \        `,
   String.raw`       /____||____\       `,
 ];
@@ -97,9 +97,13 @@ if (name) {
 Promise.all(bannerPromises).then(results => {
   byeBannerLines = results.flatMap(r => r.split('\n').filter(l => l.trim()));
 
+  const flameColors = ['\x1B[30m', '\x1B[31m', '\x1B[33m', '\x1B[38;5;208m'];
   const interval = setInterval(() => {
   const flameSet = flames[frame % flames.length];
-  const fullRocket = [...rocket, ...flameSet, ...byeBannerLines];
+  const coloredFlameSet = flameSet.map((line, i) =>
+    flameColors[(frame + i) % flameColors.length] + line + '\x1B[0m'
+  );
+  const fullRocket = [...rocket, ...coloredFlameSet, ...byeBannerLines];
   const offset = rows - frame;
 
   process.stdout.write('\x1B[H'); // move cursor home
