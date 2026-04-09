@@ -22,8 +22,8 @@ export const rocket = [
   String.raw`   /        ||        \   `,
   String.raw`  /         ||         \  `,
   String.raw` /          ||          \ `,
-  String.raw` \
-            ||          / `,
+  String.raw`|
+            ||\         / `,
   String.raw`  \         ||         /  `,
   String.raw`   \________||  ______/   `,
   String.raw`        /   ||            `,
