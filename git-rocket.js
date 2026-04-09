@@ -1,32 +1,32 @@
 export const rocket = [
-  String.raw`            /\            `,
-  String.raw`           /  \           `,
-  String.raw`          /____\          `,
+  String.raw`                          `,
+  String.raw`              \           `,
+  String.raw`           ____\          `,
   String.raw`           |  |           `,
   String.raw`           |  |           `,
-  String.raw`          /|__|\          `,
-  String.raw`         /  ||  \         `,
-  String.raw`        /   ||   \        `,
+  String.raw`          /|__|          `,
+  String.raw`         /  ||           `,
+  String.raw`        /   ||           `,
   String.raw`       |    ||    |       `,
   String.raw`       |    ||    |       `,
-  String.raw`       |    ||    |       `,
-  String.raw`       |    ||    |       `,
+  String.raw`            ||    |       `,
+  String.raw`            ||    |       `,
   String.raw`       |    ||    |       `,
   String.raw`       |    ||    |       `,
   String.raw`      /|    ||    |\      `,
-  String.raw`     / |    ||    | \     `,
-  String.raw`    /  |    ||    |  \    `,
-  String.raw`   /___|____||____|___\   `,
+  String.raw`     / |    ||    |       `,
+  String.raw`    /  |    ||            `,
+  String.raw`   /___|____||__   ___\   `,
   String.raw`     /      ||      \     `,
   String.raw`    /       ||       \    `,
-  String.raw`   /        ||        \   `,
-  String.raw`  /         ||         \  `,
-  String.raw` /          ||          \ `,
-  String.raw` \          ||          / `,
+  String.raw`            ||        \   `,
+  String.raw`            ||         \  `,
+  String.raw`            ||          \ `,
+  String.raw`            ||          / `,
   String.raw`  \         ||         /  `,
   String.raw`   \________||________/   `,
-  String.raw`        /   ||   \        `,
-  String.raw`       /____||____\       `,
+  String.raw`        /   ||            `,
+  String.raw`       /____||__          `,
 ];
 
 export const flames = [
@@ -87,7 +87,7 @@ let byeBannerLines = [];
 
 // Generate banner(s), then start animation
 const bannerPromises = [
-  new Promise(resolve => asciify('Bye', { font: 'standard' }, (err, res) => resolve(err ? '' : res))),
+  new Promise(resolve => asciify('Go', { font: 'standard' }, (err, res) => resolve(err ? '' : res))),
 ];
 if (name) {
   bannerPromises.push(
