@@ -19,14 +19,14 @@ export const rocket = [
   String.raw`   /___|____||__   ___\   `,
   String.raw`     /      ||      \     `,
   String.raw`    /       ||       \    `,
-  String.raw`            ||        \   `,
-  String.raw`            ||         \  `,
-  String.raw`            ||          \ `,
-  String.raw`            ||          / `,
+  String.raw`   /        ||        \   `,
+  String.raw`  /         ||         \  `,
+  String.raw` /          ||          \ `,
+  String.raw` \          ||          / `,
   String.raw`  \         ||         /  `,
-  String.raw`   \________||  ______/   `,
-  String.raw`        /   ||            `,
-  String.raw`       /____||__          `,
+  String.raw`   \________||________/   `,
+  String.raw`        /   ||   \        `,
+  String.raw`       /____||____\       `,
 ];
 
 export const flames = [
