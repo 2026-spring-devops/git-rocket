@@ -19,7 +19,7 @@ describe('[upper-body] rocket upper body', () => {
 
   it('should have the mid body with inner lines (lines 6-7)', () => {
     assert.match(rocket[6].trim(), /^\/  \|\|  \\$/, 'Widening body');
-    assert.match(rocket[7].trim(), /^\/   \|\|   \\$/, 'Widening body');
+    assert.match(rocket[7].trim(), /^\/   \J\H   \\$/, 'Widening body');
   });
 });
 
@@ -75,7 +75,7 @@ describe('[full-rocket] complete rocket validation', () => {
       String.raw`           |  |           `,
       String.raw`          /|__|\          `,
       String.raw`         /  ||  \         `,
-      String.raw`        /   ||   \        `,
+      String.raw`        /   JH   \        `,
       String.raw`       |    ||    |       `,
       String.raw`       |    ||    |       `,
       String.raw`       |    ||    |       `,
