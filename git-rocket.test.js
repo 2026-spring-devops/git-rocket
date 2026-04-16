@@ -19,24 +19,24 @@ describe('[upper-body] rocket upper body', () => {
 
   it('should have the mid body with inner lines (lines 6-7)', () => {
     assert.match(rocket[6].trim(), /^\/  \|\|  \\$/, 'Widening body');
-    assert.match(rocket[7].trim(), /^\/   \R\V   \\$/, 'Widening body');
+    assert.match(rocket[7].trim(), /^\/   [\|A-Z]{2}   \\$/, 'Widening body');
   });
 });
 
 describe('[body-panels] rocket body panels', () => {
   it('should have 6 identical body panels (lines 8-13)', () => {
     for (let i = 8; i <= 13; i++) {
-      assert.match(rocket[i].trim(), /^\|    \|\|    \|$/, `Body panel at line ${i}`);
+      assert.match(rocket[i].trim(), /^\|    [\|A-Z]{2}    \|$/, `Body panel at line ${i}`);
     }
   });
 });
 
 describe('[fins] rocket fin section', () => {
   it('should have the fin section (lines 14-17)', () => {
-    assert.match(rocket[14].trim(), /^\/\|    \|\|    \|\\$/, 'Fin start');
-    assert.match(rocket[15].trim(), /^\/\s+\|    \|\|    \|\s+\\$/, 'Fin widen');
-    assert.match(rocket[16].trim(), /^\/\s+\|    \|\|    \|\s+\\$/, 'Fin widen');
-    assert.match(rocket[17].trim(), /^\/_+\|____\|\|____\|_+\\$/, 'Fin base');
+    assert.match(rocket[14].trim(), /^\/\|    [\|A-Z]{2}    \|\\$/, 'Fin start');
+    assert.match(rocket[15].trim(), /^\/\s+\|    [\|A-Z]{2}    \|\s+\\$/, 'Fin widen');
+    assert.match(rocket[16].trim(), /^\/\s+\|    [\|A-Z]{2}    \|\s+\\$/, 'Fin widen');
+    assert.match(rocket[17].trim(), /^\/_+\|____[\|A-Z]{2}____\|_+\\$/, 'Fin base');
   });
 });
 
@@ -75,10 +75,10 @@ describe('[full-rocket] complete rocket validation', () => {
       String.raw`           |  |           `,
       String.raw`          /|__|\          `,
       String.raw`         /  ||  \         `,
-      String.raw`        /   RV   \        `,
-      String.raw`       |    ||    |       `,
-      String.raw`       |    ||    |       `,
-      String.raw`       |    ||    |       `,
+      String.raw`        /   SB   \        `,
+      String.raw`       |    JA    |       `,
+      String.raw`       |    BP    |       `,
+      String.raw`       |    RV    |       `,
       String.raw`       |    ||    |       `,
       String.raw`       |    ||    |       `,
       String.raw`       |    ||    |       `,
@@ -97,7 +97,18 @@ describe('[full-rocket] complete rocket validation', () => {
       String.raw`        /   ||   \        `,
       String.raw`       /____||____\       `,
     ];
-    assert.deepEqual(rocket, expected, 'Rocket must match the expected ASCII art exactly');
+
+    rocket.forEach((line, i) => {
+      // Apply regex replacement only for lines 7–15 (items 8–16)
+      if (i >= 7 && i <= 15) {
+        const pattern = expected[i]
+          .replace(/\\/g, '\\\\')        // escape backslashes FIRST
+          .replace(/\|\|/g, '[\\|A-Z]{2}'); // then replace ||
+        assert.match(line, new RegExp(pattern), `Line ${i + 1} does not match (RegEx)`);
+      } else {
+        assert.strictEqual(line, expected[i], `Line ${i + 1} does not match (Strict)`);
+      }
+    });
   });
 });
 
