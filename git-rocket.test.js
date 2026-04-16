@@ -79,7 +79,7 @@ describe('[full-rocket] complete rocket validation', () => {
       String.raw`       |    JA    |       `,
       String.raw`       |    BP    |       `,
       String.raw`       |    RV    |       `,
-      String.raw`       |    ||    |       `,
+      String.raw`       |    JM    |       `,
       String.raw`       |    ||    |       `,
       String.raw`       |    ||    |       `,
       String.raw`      /|    ||    |\      `,
