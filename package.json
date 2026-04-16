@@ -1,7 +1,7 @@
 {
   "name": "git-rocket",
   "version": "1.0.0",
-  "description": "",
+  "description": "An animated ASCII rocket with customizable goodbye messages.",
   "license": "ISC",
   "author": "",
   "type": "module",
@@ -9,18 +9,28 @@
   "scripts": {
     "start": "node git-rocket.js --",
     "test": "node --test *.test.js",
-    "test:nose-cone":        "node --test --test-name-pattern=\"\\[nose-cone\\]\" git-rocket.test.js",
-    "test:upper-body":       "node --test --test-name-pattern=\"\\[upper-body\\]\" git-rocket.test.js",
-    "test:body-panels":      "node --test --test-name-pattern=\"\\[body-panels\\]\" git-rocket.test.js",
-    "test:fins":             "node --test --test-name-pattern=\"\\[fins\\]\" git-rocket.test.js",
-    "test:nozzle":           "node --test --test-name-pattern=\"\\[nozzle\\]\" git-rocket.test.js",
-    "test:full-rocket":      "node --test --test-name-pattern=\"\\[full-rocket\\]\" git-rocket.test.js",
-    "test:flames":           "node --test --test-name-pattern=\"\\[flames\\]\" git-rocket.test.js",
-    "test:sanitize-valid":   "node --test --test-name-pattern=\"\\[sanitize-valid\\]\" sanitize.test.js",
+    "test:nose-cone": "node --test --test-name-pattern=\"\\[nose-cone\\]\" git-rocket.test.js",
+    "test:upper-body": "node --test --test-name-pattern=\"\\[upper-body\\]\" git-rocket.test.js",
+    "test:body-panels": "node --test --test-name-pattern=\"\\[body-panels\\]\" git-rocket.test.js",
+    "test:fins": "node --test --test-name-pattern=\"\\[fins\\]\" git-rocket.test.js",
+    "test:nozzle": "node --test --test-name-pattern=\"\\[nozzle\\]\" git-rocket.test.js",
+    "test:full-rocket": "node --test --test-name-pattern=\"\\[full-rocket\\]\" git-rocket.test.js",
+    "test:flames": "node --test --test-name-pattern=\"\\[flames\\]\" git-rocket.test.js",
+    "test:sanitize-valid": "node --test --test-name-pattern=\"\\[sanitize-valid\\]\" sanitize.test.js",
     "test:sanitize-invalid": "node --test --test-name-pattern=\"\\[sanitize-invalid\\]\" sanitize.test.js",
-    "test:sanitize-profanity":"node --test --test-name-pattern=\"\\[sanitize-profanity\\]\" sanitize.test.js"
+    "test:sanitize-profanity": "node --test --test-name-pattern=\"\\[sanitize-profanity\\]\" sanitize.test.js"
   },
   "dependencies": {
     "asciify": "^1.3.5"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/2026-spring-devops/git-rocket.git"
+  },
+  "keywords": [],
+  "bugs": {
+    "url": "https://github.com/2026-spring-devops/git-rocket/issues"
+  },
+  "homepage": "https://github.com/2026-spring-devops/git-rocket#readme"
 }

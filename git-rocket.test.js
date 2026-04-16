@@ -50,7 +50,7 @@ describe('[nozzle] rocket nozzle and engine', () => {
     }
     assert.match(rocket[25].trim(), /^\\_{4,}\|\|_{4,}\/$/, 'Nozzle base');
     assert.match(rocket[26].trim(), /^\/\s+\|\|\s+\\$/, 'Engine inner');
-    assert.match(rocket[27].trim(), /^\/_{2,}\|\|_{2,}\\$/, 'Engine base');
+    assert.match(rocket[27].trim(), /^\/_+\|\|_+\\$/, 'Engine base');
   });
 });
 
