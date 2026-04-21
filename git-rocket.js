@@ -12,7 +12,7 @@ export const rocket = [
   String.raw`       |    RV    |       `,
   String.raw`       |    JM    |       `,
   String.raw`       |    DR    |       `,
-  String.raw`       |    ||    |       `,
+  String.raw`       |    NK    |       `,
   String.raw`      /|    ||    |\      `,
   String.raw`     / |    ||    | \     `,
   String.raw`    /  |    ||    |  \    `,
