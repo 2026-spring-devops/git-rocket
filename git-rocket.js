@@ -13,7 +13,7 @@ export const rocket = [
   String.raw`       |    JM    |       `,
   String.raw`       |    DR    |       `,
   String.raw`       |    NK    |       `,
-  String.raw`      /|    ||    |\      `,
+  String.raw`      /|    JH    |\      `,
   String.raw`     / |    ||    | \     `,
   String.raw`    /  |    ||    |  \    `,
   String.raw`   /___|____||____|___\   `,
