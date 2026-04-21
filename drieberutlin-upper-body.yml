@@ -17,7 +17,7 @@
 #   npm run test:sanitize-invalid
 #   npm run test:sanitize-profanity
 
-name: "YOUR_NAME - YOUR_GROUP tests"
+name: "drieberutlin upper-body tests"
 
 on:
   push:
@@ -38,4 +38,4 @@ jobs:
       - run: npm ci
 
       # Replace test:YOUR_GROUP with your assigned script, e.g. test:nose-cone
-      - run: npm run test:YOUR_GROUP
+      - run: npm run test:upper-body
