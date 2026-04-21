@@ -37,4 +37,4 @@ jobs:
       - run: npm ci
 
       # Replace test:YOUR_GROUP with your assigned script, e.g. test:nose-cone
-      - run: npm run test:YOUR_GROUP
+      - run: npm run test:body-panels
