@@ -8,7 +8,9 @@
   "main": "git-rocket.js",
   "scripts": {
     "start": "node git-rocket.js --",
+    "web": "node web.js",
     "test": "node --test *.test.js",
+    "test:web": "node --test web.test.js",
     "test:nose-cone":        "node --test --test-name-pattern=\"\\[nose-cone\\]\" git-rocket.test.js",
     "test:upper-body":       "node --test --test-name-pattern=\"\\[upper-body\\]\" git-rocket.test.js",
     "test:body-panels":      "node --test --test-name-pattern=\"\\[body-panels\\]\" git-rocket.test.js",

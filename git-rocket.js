@@ -1,57 +1,5 @@
-export const rocket = [
-  String.raw`            /\            `,
-  String.raw`           /  \           `,
-  String.raw`          /____\          `,
-  String.raw`           |  |           `,
-  String.raw`           |  |           `,
-  String.raw`          /|__|\          `,
-  String.raw`         /  ||  \         `,
-  String.raw`        /   SB   \        `,
-  String.raw`       |    JA    |       `,
-  String.raw`       |    BP    |       `,
-  String.raw`       |    RV    |       `,
-  String.raw`       |    JM    |       `,
-  String.raw`       |    DR    |       `,
-  String.raw`       |    ||    |       `,
-  String.raw`      /|    ||    |\      `,
-  String.raw`     / |    ||    | \     `,
-  String.raw`    /  |    ||    |  \    `,
-  String.raw`   /___|____||____|___\   `,
-  String.raw`     /      ||      \     `,
-  String.raw`    /       ||       \    `,
-  String.raw`   /        ||        \   `,
-  String.raw`  /         ||         \  `,
-  String.raw` /          ||          \ `,
-  String.raw` \          ||          / `,
-  String.raw`  \         ||         /  `,
-  String.raw`   \________||________/   `,
-  String.raw`        /   ||   \        `,
-  String.raw`       /____||____\       `,
-];
-
-export const flames = [
-  [
-    String.raw`          \  :  /         `,
-    String.raw`           . : .          `,
-    String.raw`        --- : : ---       `,
-    String.raw`            :.:           `,
-  ],
-  [
-    String.raw`           .: :.          `,
-    String.raw`        .  : : :  .       `,
-    String.raw`          .: : :.         `,
-    String.raw`        --- :.: ---       `,
-    String.raw`            .:.           `,
-  ],
-  [
-    String.raw`         \  : :  /        `,
-    String.raw`          . : : .         `,
-    String.raw`           .: :.          `,
-    String.raw`        --- : : ---       `,
-    String.raw`           .:::.          `,
-    String.raw`            .:.           `,
-  ],
-];
+export { rocket, flames } from './rocket.js';
+import { rocket, flames } from './rocket.js';
 
 // Only run animation when executed directly
 const isMain = process.argv[1] && import.meta.url.endsWith(process.argv[1].replace(/\\/g, '/'));
