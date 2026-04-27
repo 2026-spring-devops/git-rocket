@@ -25,13 +25,13 @@ name: "Publish rocket page"
 run-name: "Publish ${{ github.ref_name }} → ${{ github.event.head_commit.message }}"
 
 env:
-  STUDENT_BRANCH: YOUR_BRANCH     # e.g. tsteele/rocket-page
-  OUTPUT_FILENAME: YOUR_FILENAME  # e.g. tsteele.html
+  STUDENT_BRANCH: tsteele/week-14-practice     # e.g. tsteele/rocket-page
+  OUTPUT_FILENAME: tsteele-p.html  # e.g. tsteele.html
 
 on:
   push:
     branches:
-      - YOUR_BRANCH  # ← must match STUDENT_BRANCH above
+      - tsteele/week-14-practice  # ← must match STUDENT_BRANCH above
 
 permissions:
   contents: write
