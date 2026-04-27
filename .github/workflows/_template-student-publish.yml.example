@@ -81,7 +81,7 @@ jobs:
           mkdir -p docs
           cp /tmp/${{ env.OUTPUT_FILENAME }} docs/${{ env.OUTPUT_FILENAME }}
 
-          git add -f docs/${{ env.OUTPUT_FILENAME }}
+          git add docs/${{ env.OUTPUT_FILENAME }}
           git diff --cached --quiet && echo "No changes, skipping PR." && exit 0
 
           git commit -m "publish: ${{ env.OUTPUT_FILENAME }} from ${{ env.STUDENT_BRANCH }}"
