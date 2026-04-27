@@ -76,9 +76,12 @@ jobs:
           git commit -m "publish: ${{ env.OUTPUT_FILENAME }} from ${{ env.STUDENT_BRANCH }}"
           git push origin "$PUBLISH_BRANCH" --force
 
-          gh pr create \
-            --base main \
-            --head "$PUBLISH_BRANCH" \
-            --title "Publish ${{ env.OUTPUT_FILENAME }} to GitHub Pages" \
-            --body "Automated PR from \`${{ env.STUDENT_BRANCH }}\`. Merging will add \`docs/${{ env.OUTPUT_FILENAME }}\` to main and trigger a GitHub Pages deployment." \
-          2>/dev/null || echo "PR already exists, updated branch."
+          if gh pr view "$PUBLISH_BRANCH" --json number &>/dev/null; then
+            echo "PR already exists — branch updated, PR will reflect new changes."
+          else
+            gh pr create \
+              --base main \
+              --head "$PUBLISH_BRANCH" \
+              --title "Publish ${{ env.OUTPUT_FILENAME }} to GitHub Pages" \
+              --body "Automated PR from \`${{ env.STUDENT_BRANCH }}\`. Merging will add \`docs/${{ env.OUTPUT_FILENAME }}\` to main and trigger a GitHub Pages deployment."
+          fi
