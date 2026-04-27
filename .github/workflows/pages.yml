@@ -5,7 +5,7 @@ on:
     branches: [main]
 
 permissions:
-  contents: read
+  contents: write
   pages: write
   id-token: write
 
@@ -28,6 +28,17 @@ jobs:
 
       - run: npm ci
       - run: npm run build:docs
+
+      - name: Commit docs/index.html to main
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git config user.email "actions@github.com"
+          git config user.name "GitHub Actions"
+          git add docs/index.html
+          git diff --cached --quiet && echo "No changes to index.html." && exit 0
+          git commit -m "docs: rebuild index.html [skip ci]"
+          git push origin main
 
       - uses: actions/upload-pages-artifact@v3
         with:
