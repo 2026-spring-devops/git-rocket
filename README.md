@@ -52,9 +52,24 @@ npm run test:sanitize-profanity
 # etc.
 ```
 
-### Setting up your GitHub Actions workflow
+### Setting up your GitHub Actions workflow (tests)
 
 1. Copy `.github/workflows/_template-student.yml.example`
 2. Rename it to `<your-name>-<group>.yml` (e.g., `alice-nose-cone.yml`)
 3. Replace `YOUR_NAME` and `test:YOUR_GROUP` in the file (e.g., `test:nose-cone`)
 4. Commit and push — your tests will run on every push to `main`
+
+### Publishing your rocket page
+
+Each student can publish a personalized static HTML version of their rocket to the class GitHub Pages site from their own branch.
+
+1. Create your branch from `main` and make your rocket edits
+2. Copy `.github/workflows/_template-publish.yml.example` into `.github/workflows/`
+3. Rename it to `<your-name>-publish.yml` (e.g., `tsteele-publish.yml`)
+4. Open the file and set three values:
+   - `STUDENT_BRANCH` — your branch name (e.g., `tsteele/rocket-page`)
+   - `OUTPUT_FILENAME` — your HTML filename (e.g., `tsteele.html`) — use your name to avoid conflicts
+   - `on.push.branches` — also update this to match your branch name
+5. Commit the workflow to your branch and push
+
+On every push to your branch the workflow will open (or update) a pull request that adds `docs/<your-name>.html` to `main`. Once the PR is merged, GitHub Pages will serve your rocket automatically.
