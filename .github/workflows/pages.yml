@@ -5,9 +5,7 @@ on:
     branches: [main]
 
 permissions:
-  contents: read
-  pages: write
-  id-token: write
+  contents: write
 
 concurrency:
   group: pages
@@ -24,21 +22,39 @@ jobs:
           node-version: 20
           cache: npm
 
-      - uses: actions/configure-pages@v5
-
       - run: npm ci
       - run: npm run build:docs
 
-      - uses: actions/upload-pages-artifact@v3
-        with:
-          path: ./docs
+      - name: Publish docs to gh-pages
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          PUBLISH_DIR="$RUNNER_TEMP/gh-pages"
+          rm -rf "$PUBLISH_DIR"
+          mkdir -p "$PUBLISH_DIR"
 
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
-      - id: deployment
-        uses: actions/deploy-pages@v4
+          git init "$PUBLISH_DIR"
+          cd "$PUBLISH_DIR"
+
+          git config user.email "actions@github.com"
+          git config user.name "GitHub Actions"
+          git remote add origin "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+
+          if git ls-remote --exit-code --heads origin gh-pages >/dev/null 2>&1; then
+            git fetch origin gh-pages
+            git checkout -B gh-pages FETCH_HEAD
+          else
+            git checkout --orphan gh-pages
+          fi
+
+          rsync -a --delete --exclude='.git/' "$GITHUB_WORKSPACE/docs/" "$PUBLISH_DIR"/
+          touch .nojekyll
+
+          git add -A
+          if git diff --cached --quiet; then
+            echo "No gh-pages changes."
+            exit 0
+          fi
+
+          git commit -m "publish: update gh-pages [skip ci]"
+          git push origin gh-pages --force

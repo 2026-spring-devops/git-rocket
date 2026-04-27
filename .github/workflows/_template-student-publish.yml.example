@@ -17,7 +17,8 @@
 # 4. Commit this workflow file to YOUR branch and push.
 #    On every push the workflow will open (or update) a pull
 #    request to add your rocket page to main's docs/ folder.
-#    Once the PR is merged, GitHub Pages will serve your page at:
+#    Once the PR is merged, pages.yml publishes docs/ to gh-pages.
+#    Your page will then be served at:
 #    https://<org>.github.io/git-rocket/YOUR_FILENAME
 # ─────────────────────────────────────────────────────────────
 
