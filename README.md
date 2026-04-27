@@ -1,14 +1,27 @@
 # Git Rocket 🚀
 
-An animated ASCII rocket with customizable goodbye messages.
+An animated ASCII rocket with customizable goodbye messages and a generated static site.
 
 ## Usage
 
 ```bash
 npm start                    # Launch the rocket
 npm start -- -who Alice      # Launch with "Bye Alice" trailing behind
+npm run build:docs           # Generate docs/index.html locally
 npm test                     # Run all tests
 ```
+
+## Static site
+
+The project can generate a static HTML page from the same rocket definition used by the CLI in `git-rocket.js`.
+
+```bash
+npm run build:docs
+```
+
+That command writes `docs/index.html` locally. The file is treated as generated output and is not committed.
+
+GitHub Pages is published by `.github/workflows/pages.yml` on pushes to `main`. The workflow runs the generator, uploads the generated `docs/` directory, and deploys that artifact to Pages.
 
 ## Test Groups
 
@@ -27,12 +40,14 @@ This is designed for students to each create a GitHub Actions workflow for their
 | `[sanitize-valid]`   | Sanitize: valid input acceptance          |
 | `[sanitize-invalid]` | Sanitize: invalid input rejection         |
 | `[sanitize-profanity]` | Sanitize: profanity filter              |
+| `[docs]`             | Static docs generation                    |
 
 ### Run a single group
 
 ```bash
 npm run test:nose-cone
 npm run test:fins
+npm run test:docs
 npm run test:sanitize-profanity
 # etc.
 ```
