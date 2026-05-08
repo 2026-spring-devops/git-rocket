@@ -10,7 +10,7 @@ export const rocket = [
   String.raw`                    | |  H   | |                    `,
   String.raw`                    | |______| |                    `,
   String.raw`                   /|          |\                   `,
-  String.raw`                  / | jmystic  | \                  `,
+  String.raw`                  / | tgardner | \                  `,
   String.raw`                 /  |          |  \                 `,
   String.raw`                /___|__________|___\                `,
   String.raw`                    |    ||    |                    `,
@@ -26,6 +26,7 @@ export const rocket = [
   String.raw`                         /||\                        `,
   String.raw`                        /_||_\                       `,
 ];
+
 
 export const flames = [
   [
