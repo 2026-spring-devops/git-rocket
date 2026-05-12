@@ -1,0 +1,41 @@
+# Student Workflow Template
+# ─────────────────────────
+# 1. Copy this file and rename it: <your-name>-<group>.yml
+#    Example: tsteele-nose-cone.yml
+#
+# 2. Replace YOUR_NAME and YOUR_GROUP below.
+#
+# Available npm scripts (pick one):
+#   npm run test:nose-cone
+#   npm run test:upper-body
+#   npm run test:body-panels
+#   npm run test:fins
+#   npm run test:nozzle
+#   npm run test:full-rocket
+#   npm run test:flames
+#   npm run test:sanitize-valid
+#   npm run test:sanitize-invalid
+#   npm run test:sanitize-profanity
+
+name: "jarengo-sanitize-invalid"
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - run: npm ci
+
+      # Replace test:YOUR_GROUP with your assigned script, e.g. test:nose-cone
+      - run: npm run test:sanitize-invalid
